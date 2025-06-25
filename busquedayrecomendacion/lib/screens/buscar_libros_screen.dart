@@ -80,12 +80,24 @@ class _BuscarLibrosScreenState extends State<BuscarLibrosScreen> {
                   itemBuilder: (context, index) {
                     final libro = resultados![index];
                     return ListTile(
+                      leading:
+                          libro['portada_url'] != null &&
+                              libro['portada_url'] != ''
+                          ? Image.network(
+                              libro['portada_url'],
+                              width: 50,
+                              height: 70,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Icon(Icons.book),
+                            )
+                          : Icon(Icons.book),
                       title: Text(libro['titulo'] ?? 'Sin título'),
                       subtitle: Text(libro['autor'] ?? ''),
                       trailing: IconButton(
                         icon: const Icon(Icons.favorite_border),
                         onPressed: () =>
-                            agregarAFavoritos(libro['id'].toString()),
+                            agregarAFavoritos(libro['isbn']?.toString() ?? ''),
                       ),
                     );
                   },

@@ -80,12 +80,25 @@ class _BuscarSeriesScreenState extends State<BuscarSeriesScreen> {
                   itemBuilder: (context, index) {
                     final serie = resultados![index];
                     return ListTile(
+                      leading:
+                          serie['imagen_url'] != null &&
+                              serie['imagen_url'] != ''
+                          ? Image.network(
+                              serie['imagen_url'],
+                              width: 50,
+                              height: 70,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Icon(Icons.tv),
+                            )
+                          : Icon(Icons.tv),
                       title: Text(serie['titulo'] ?? 'Sin título'),
                       subtitle: Text(serie['descripcion'] ?? ''),
                       trailing: IconButton(
                         icon: const Icon(Icons.favorite_border),
-                        onPressed: () =>
-                            agregarAFavoritos(serie['id'].toString()),
+                        onPressed: () => agregarAFavoritos(
+                          serie['show_id']?.toString() ?? '',
+                        ),
                       ),
                     );
                   },
