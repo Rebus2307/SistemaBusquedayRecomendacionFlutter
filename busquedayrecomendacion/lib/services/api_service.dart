@@ -40,5 +40,49 @@ class ApiService {
     return null;
   }
 
-  // Agrega aquí métodos para buscar series, favoritos, editar perfil, etc.
+  // Buscar libros
+  static Future<List<dynamic>?> buscarLibros(String query, String token) async {
+    final url = Uri.parse('$baseUrl/api/buscar-libros/?q=$query');
+    final response = await http.get(
+      url,
+      headers: {'Authorization': 'Bearer $token'},
+    );
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    }
+    return null;
+  }
+
+  // Buscar series
+  static Future<List<dynamic>?> buscarSeries(String query, String token) async {
+    final url = Uri.parse('$baseUrl/api/buscar-series/?q=$query');
+    final response = await http.get(
+      url,
+      headers: {'Authorization': 'Bearer $token'},
+    );
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    }
+    return null;
+  }
+
+  // Agregar libro a favoritos
+  static Future<bool> agregarLibroFavorito(String libroId, String token) async {
+    final url = Uri.parse('$baseUrl/api/agregar-favorito-libro/$libroId/');
+    final response = await http.post(
+      url,
+      headers: {'Authorization': 'Bearer $token'},
+    );
+    return response.statusCode == 201 || response.statusCode == 200;
+  }
+
+  // Agregar serie a favoritos
+  static Future<bool> agregarSerieFavorita(String serieId, String token) async {
+    final url = Uri.parse('$baseUrl/api/agregar-favorito-pelicula/$serieId/');
+    final response = await http.post(
+      url,
+      headers: {'Authorization': 'Bearer $token'},
+    );
+    return response.statusCode == 201 || response.statusCode == 200;
+  }
 }

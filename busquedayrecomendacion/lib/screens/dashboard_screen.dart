@@ -5,9 +5,9 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Recibe los argumentos pasados desde el login
     final args = ModalRoute.of(context)!.settings.arguments as Map?;
     final bool esAdmin = args?['esAdmin'] ?? false;
+    final String token = args?['token'] ?? '';
 
     return Scaffold(
       appBar: AppBar(
@@ -28,28 +28,44 @@ class DashboardScreen extends StatelessWidget {
             leading: const Icon(Icons.book),
             title: const Text('Buscar Libros'),
             onTap: () {
-              Navigator.pushNamed(context, '/buscar_libros');
+              Navigator.pushNamed(
+                context,
+                '/buscar_libros',
+                arguments: {'token': token},
+              );
             },
           ),
           ListTile(
             leading: const Icon(Icons.tv),
             title: const Text('Buscar Series'),
             onTap: () {
-              Navigator.pushNamed(context, '/buscar_series');
+              Navigator.pushNamed(
+                context,
+                '/buscar_series',
+                arguments: {'token': token},
+              );
             },
           ),
           ListTile(
             leading: const Icon(Icons.favorite),
             title: const Text('Favoritos y Recomendaciones'),
             onTap: () {
-              Navigator.pushNamed(context, '/favoritos');
+              Navigator.pushNamed(
+                context,
+                '/favoritos',
+                arguments: {'token': token},
+              );
             },
           ),
           ListTile(
             leading: const Icon(Icons.person),
             title: const Text('Editar Perfil'),
             onTap: () {
-              Navigator.pushNamed(context, '/perfil');
+              Navigator.pushNamed(
+                context,
+                '/perfil',
+                arguments: {'token': token},
+              );
             },
           ),
           if (esAdmin)
@@ -57,7 +73,11 @@ class DashboardScreen extends StatelessWidget {
               leading: const Icon(Icons.admin_panel_settings),
               title: const Text('Lista de Usuarios (Admin)'),
               onTap: () {
-                Navigator.pushNamed(context, '/admin_usuarios');
+                Navigator.pushNamed(
+                  context,
+                  '/admin_usuarios',
+                  arguments: {'token': token},
+                );
               },
             ),
         ],
