@@ -59,4 +59,11 @@ Aplicación Flutter para la búsqueda y recomendación de libros y series, con a
 - Frontend Flutter: [Este repositorio](https://github.com/TU_USUARIO/SistemaBusquedayRecomendacionFlutter)
 - Backend Django: [SistemaBusquedaYRecomendacionDJango](https://github.com/Rebus2307/SistemaBusquedaYRecomendacionDJango.git)
 
+## Capturas
+
+![LoginPhone](https://github.com/user-attachments/assets/01b4efb1-ea65-40c6-a200-4d3b46099ae3)
+![DashboardPhone](https://github.com/user-attachments/assets/cfd4338d-3082-4697-ac8e-90046afdacc5)
+![BuscarLibrosPhone](https://github.com/user-attachments/assets/899646e0-f7c5-482c-857e-05dfb9d07211)
+![BuscarSeriesPhone](https://github.com/user-attachments/assets/1b2e2960-2a0a-4f8c-9c03-ac44c339c1fb)
+
 ---
